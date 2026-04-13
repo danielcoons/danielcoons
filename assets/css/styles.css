@@ -92,6 +92,21 @@ body {
   border: 1px solid var(--outline);
 }
 
+.tags {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+/* CHIPS */
+.chip {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    margin-right: 0.4rem;
+    font-size: 0.75rem;
+}
+
 /* BUTTONS */
 
 .btn {
@@ -142,3 +157,52 @@ body {
 .project-section {
   margin-top: 2rem;
 }
+
+/* =========================
+   MATERIAL 3 LINKS
+========================= */
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover state */
+a:hover {
+  color: #e0d4ff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Active / click state */
+a:active {
+  opacity: 0.7;
+}
+
+/* Visited links (keeps things consistent in dark UI) */
+a:visited {
+  color: var(--primary);
+  opacity: 0.9;
+}
+
+/* =========================
+   NAV LINKS (override general link styling)
+========================= */
+
+.nav-item {
+  color: #a8a3ae;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* Active nav state */
+.nav-item.active {
+  color: var(--primary);
+}
+

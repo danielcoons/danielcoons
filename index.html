@@ -9,39 +9,38 @@
 </head>
 
 <body>
-
+  <!-- TOP BAR -->
 <header class="top-bar">
   <span class="title">Daniel Coons</span>
   <nav>
     <a href="./index.html">Home</a>
-    <a href="./components/buttons.html">Components</a>
+    <!--<a href="./components/buttons.html">Components</a> -->
     <a href="https://github.com/danielcoons">GitHub</a>
   </nav>
 </header>
 
+ <!-- NAV BAR -->
 <div class="app">
-
   <aside class="nav-rail">
     <a href="./index.html" class="nav-item active">
       <span class="material-symbols-rounded">home</span>
       <span class="label">Home</span>
     </a>
 
+    <!--
     <a href="./components/buttons.html" class="nav-item">
       <span class="material-symbols-rounded">buttons_alt</span>
       <span class="label">Buttons</span>
-    </a>
+    </a> -->
   </aside>
 
   <main class="content">
-
     <!-- HERO -->
     <section class="hero fade-in">
       <h1>Engineering Tools with Modern UI Systems</h1>
       <p>Building modern, usable engineering tools with an emphasis on UI systems and modular application development.</p>
 
       <div class="cta-row">
-        <a href="./components/buttons.html" class="btn filled">Design System</a>
         <a href="https://github.com/danielcoons" class="btn outlined">GitHub</a>
       </div>
     </section>
@@ -75,9 +74,8 @@
 
       <div class="grid">
 
-        <!-- CARD -->
+        <!-- CARD TSC MATERIAL -->
         <div class="card fade-in">
-
           <div class="carousel">
             <div class="carousel-track">
               <img src="./assets/images/project1/1.png" class="carousel-image active" loading="lazy">
@@ -88,7 +86,6 @@
 
             <button class="carousel-btn prev">&#10094;</button>
             <button class="carousel-btn next">&#10095;</button>
-
             <div class="carousel-dots"></div>
           </div>
 
@@ -104,26 +101,52 @@
           </div>
 
           <div class="card-actions">
-            <a href="#">View Project →</a>
-            <a href="#">Download →</a>
+            <div class="action-links">
+              <a href="https://github.com/danielcoons/tsc-material-theme" target="_blank">View Project →</a>
+            </div>
+            <div class="vipm-meta">
+              <a href="https://www.vipm.io/package/tsc_lib_tsc_material_theme/" target="_blank">Download →</a>
+              <a href="https://www.vipm.io/package/tsc_lib_tsc_material_theme/" target="_blank" class="vipm-badge">
+                <img src="https://www.vipm.io/package/tsc_lib_tsc_material_theme/badge.svg?metric=installs" alt="VIPM Downloads">
+              </a>
+            </div>
           </div>
         </div>
 
-        <!-- CARD -->
+        <!-- CARD TSC UI COMPONENTS -->
         <div class="card fade-in">
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="./assets/images/project2/1.png" class="carousel-image active" loading="lazy">
+              <img src="./assets/images/project2/2.png" class="carousel-image" loading="lazy">
+            </div>
+
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
+            <div class="carousel-dots"></div>
+          </div>
+
           <div class="card-content">
             <h3>TSC UI Components</h3>
-            <p>Custom LabVIEW UI controls.</p>
+            <p>Custom LabVIEW UI control palette.</p>
 
             <div class="chip-row">
               <div class="chip">UI</div>
               <div class="chip">LabVIEW</div>
+              <div class="chip">Controls Palette</div>
             </div>
           </div>
 
           <div class="card-actions">
-            <a href="https://github.com/danielcoons/tsc-ui-components">View Project →</a>
-            <a href="#">Download →</a>
+            <div class="action-links">
+              <a href="https://github.com/danielcoons/tsc-ui-components" target="_blank">View Project →</a>
+            </div>
+            <div class="vipm-meta">
+              <a href="https://www.vipm.io/package/tsc_lib_tsc_ui_components/" target="_blank">Download →</a>
+              <a href="https://www.vipm.io/package/tsc_lib_tsc_ui_components/" target="_blank" class="vipm-badge">
+                <img src="https://www.vipm.io/package/tsc_lib_tsc_ui_components/badge.svg?metric=installs" alt="VIPM Downloads">
+              </a>
+            </div>
           </div>
         </div>
 
@@ -131,7 +154,7 @@
     </section>
 
     <!-- DESIGN SYSTEM -->
-    <section>
+    <!--<section>
       <h2>Design System</h2>
 
       <div class="card fade-in">
@@ -145,7 +168,7 @@
           <a href="./components/buttons.html">Browse Components →</a>
         </div>
       </div>
-    </section>
+    </section>-->
 
   </main>
 </div>

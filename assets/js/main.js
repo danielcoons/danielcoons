@@ -23,9 +23,9 @@ document.querySelectorAll(".carousel").forEach(carousel => {
   if (!images.length) return;
 
   let index = 0;
-  let interval;
+  let interval = null;
 
-  /* dots */
+  /* Create dots */
   images.forEach((_, i) => {
     const dot = document.createElement("span");
     if (i === 0) dot.classList.add("active");
@@ -33,7 +33,7 @@ document.querySelectorAll(".carousel").forEach(carousel => {
     dot.addEventListener("click", () => {
       index = i;
       update();
-      reset();
+      restartInterval();
     });
 
     dotsContainer.appendChild(dot);
@@ -59,23 +59,44 @@ document.querySelectorAll(".carousel").forEach(carousel => {
     update();
   }
 
-  nextBtn?.addEventListener("click", () => { next(); reset(); });
-  prevBtn?.addEventListener("click", () => { prev(); reset(); });
+  /* Buttons */
+  prevBtn?.addEventListener("click", () => {
+    prev();
+    restartInterval();
+  });
 
-  function start() {
-    interval = setInterval(next, 4000);
+  nextBtn?.addEventListener("click", () => {
+    next();
+    restartInterval();
+  });
+
+  /* Interval control (SAFE) */
+  function startInterval() {
+    if (interval) return; // 🔥 prevents stacking
+
+    interval = setInterval(() => {
+      next();
+    }, 4000);
   }
 
-  function reset() {
+  function stopInterval() {
     clearInterval(interval);
-    start();
+    interval = null;
   }
 
-  start();
+  function restartInterval() {
+    stopInterval();
+    startInterval();
+  }
 
-  carousel.addEventListener("mouseenter", () => clearInterval(interval));
-  carousel.addEventListener("mouseleave", start);
+  /* Start once */
+  startInterval();
+
+  /* Hover behavior */
+  carousel.addEventListener("mouseenter", stopInterval);
+  carousel.addEventListener("mouseleave", startInterval);
 });
+
 /* =========================
    STAGGER ANIMATIONS
 ========================= */

@@ -211,6 +211,25 @@ a:hover::after {
 
 .top-bar nav a {
   margin-left: 1.5rem;
+  color: var(--on-secondary);
+  transition: color var(--transition);
+}
+
+.top-bar nav a:hover {
+  color: var(--on-secondary-container);
+}
+
+.top-bar nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--on-secondary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
 }
 
 /* =========================
@@ -227,7 +246,7 @@ a:hover::after {
 
 .nav-rail {
   width: 96px;
-  background: var(--surface);
+  background: var(--surface-variant);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -255,7 +274,7 @@ a:hover::after {
 }
 
 .nav-item.active {
-  color: var(--on-primary);
+  color: var(--on-primary-container);
 }
 
 .nav-item.active::before {
@@ -328,7 +347,6 @@ a:hover::after {
   align-items: stretch;
 }
 
-
 /* =========================
    CARDS
 ========================= */
@@ -345,7 +363,7 @@ a:hover::after {
   height: 100%; /* ensures full stretch */
   transition: var(--transition);
 
-   position: relative;
+  position: relative;
   z-index: 0;
 }
 
@@ -375,10 +393,15 @@ a:hover::after {
   margin-top: auto;
 
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+/* Links row */
+.action-links {
+  display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 
 .card-content {
   display: flex;
@@ -388,6 +411,33 @@ a:hover::after {
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   VIPM BADGE
+========================= */
+
+.vipm-badge img {
+  height: 28px;
+  border-radius: 8px;
+
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+/* subtle hover lift */
+.vipm-badge:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.vipm-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--on-surface-variant);
 }
 
 /* =========================

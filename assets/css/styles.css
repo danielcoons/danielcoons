@@ -41,7 +41,8 @@
   --radius: 24px;
 
   /* Motion */
-  --transition: 0.2s cubic-bezier(0.2, 0, 0, 1);
+ --transition: 0.18s cubic-bezier(0.2, 0, 0, 1);
+  
 }
 
 /* DARK THEME */
@@ -86,6 +87,77 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   background: var(--background);
   color: var(--on-background);
+}
+* {
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition),
+    border-color var(--transition);
+}
+
+/* =========================
+   TYPOGRAPHY (M3 SCALE)
+========================= */
+
+h1 {
+  font-size: 2.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--on-surface-variant);
+}
+
+.title {
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+
+/* =========================
+   SPACING SYSTEM
+========================= */
+
+section {
+  margin-bottom: 3.5rem;
+}
+
+.card {
+  padding: 1.75rem;
+}
+
+.card-content {
+  gap: 0.6rem;
+}
+
+.chip-row {
+  margin-top: 1rem;
+}
+
+.card-actions {
+  margin-top: 1.5rem;
+}
+
+
+section h2 {
+  margin-bottom: 1rem;
 }
 
 /* =========================
@@ -174,10 +246,11 @@ a:hover::after {
   text-decoration: none;
   color: var(--on-surface-variant);
   position: relative;
-  transition: var(--transition);
+  transition: all var(--transition);
 }
 
 .nav-item:hover {
+  background: var(--surface-container-high);
   color: var(--on-surface);
 }
 
@@ -186,14 +259,20 @@ a:hover::after {
 }
 
 .nav-item.active::before {
-  content: "";
-  position: absolute;
   width: 56px;
   height: 32px;
-  border-radius: 999px;
   background: var(--primary);
-  z-index: -1;
+  opacity: 0.9;
 }
+
+.btn {
+  transition: all var(--transition);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
 
 /* ICONS */
 
@@ -212,18 +291,21 @@ a:hover::after {
 /* =========================
    CONTENT
 ========================= */
-
 .content {
   flex: 1;
   padding: 2rem 3rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
+
 
 /* =========================
    HERO
 ========================= */
 
 .hero {
-  max-width: 700px;
   margin-bottom: 2rem;
 }
 
@@ -240,23 +322,92 @@ a:hover::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
+    margin-top: 1rem;
+
+  /* KEY LINE */
+  align-items: stretch;
 }
+
 
 /* =========================
    CARDS
 ========================= */
 
 .card {
+  display: flex;
+  flex-direction: column;
+
   background: var(--surface-container);
   border: 1px solid var(--outline);
   border-radius: var(--radius);
   padding: 1.5rem;
+
+  height: 100%; /* ensures full stretch */
   transition: var(--transition);
+
+   position: relative;
+  z-index: 0;
 }
 
 .card:hover {
   background: var(--surface-container-high);
+   z-index: 1;
 }
+/* =========================
+   ELEVATION
+========================= */
+
+.card {
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.08),
+    0 2px 6px rgba(0,0,0,0.08);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.18),
+    0 2px 6px rgba(0,0,0,0.12);
+}
+
+
+.card-actions {
+  margin-top: auto;
+
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   STATE LAYERS
+========================= */
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+
+.card:hover::after {
+  opacity: 0.03;
+}
+
 
 /* =========================
    CHIPS (FLOATING / M3 STYLE)
@@ -288,6 +439,21 @@ a:hover::after {
     box-shadow var(--transition),
     background var(--transition);
 }
+
+/* Chips grouped together */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  margin-top: 0.75rem;
+}
+
+/* Space between chips and link */
+.card-actions {
+  margin-top: 1.25rem;
+}
+
 
 /* HOVER = LIFT */
 .chip:hover {
@@ -453,8 +619,6 @@ pre {
   border-radius: 20px;
 
   background: var(--surface-container);
-  border: 1px solid var(--outline);
-
   padding: 0.4rem;
 
   /* subtle elevation */
@@ -481,4 +645,150 @@ pre {
 .credential-image:focus {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+.credential-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.credential-item span {
+  font-size: 0.8rem;
+  color: var(--on-surface-variant);
+}
+.credential-row {
+  padding: 1rem;
+  background: var(--surface-container);
+  border-radius: var(--radius);
+}
+
+/* =========================
+   CAROUSEL
+========================= */
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+/* Images */
+
+.carousel-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.carousel-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(6px);
+
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.carousel-image.active {
+  opacity: 1;
+}
+
+/* Buttons */
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(0,0,0,0.4);
+  color: white;
+
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+    backdrop-filter: blur(6px);
+  transition: var(--transition);
+}
+
+.carousel-btn.prev {
+  left: 8px;
+}
+
+.carousel-btn.next {
+  right: 8px;
+}
+
+/* Dots */
+
+.carousel-dots {
+  position: absolute;
+  bottom: 6px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.carousel-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+}
+
+.carousel-dots span.active {
+  background: white;
+}
+
+.carousel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.25));
+pointer-events: none; /* 🔥 allows clicks through */
+}
+
+.carousel-image.loaded {
+  filter: blur(0);
+}
+
+.carousel-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+  background: rgba(0,0,0,0.6);
+}
+/* =========================
+   SECTION SPACING
+========================= */
+
+section {
+  margin-bottom: 3rem;
+}
+
+/* =========================
+   FADE / SLIDE IN
+========================= */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

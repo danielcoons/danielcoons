@@ -22,8 +22,7 @@
 <div class="app">
 
   <aside class="nav-rail">
-
-    <a href="./index.html" class="nav-item">
+    <a href="./index.html" class="nav-item active">
       <span class="material-symbols-rounded">home</span>
       <span class="label">Home</span>
     </a>
@@ -37,7 +36,7 @@
   <main class="content">
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero fade-in">
       <h1>Engineering Tools with Modern UI Systems</h1>
       <p>Building modern, usable engineering tools with an emphasis on UI systems and modular application development.</p>
 
@@ -46,17 +45,27 @@
         <a href="https://github.com/danielcoons" class="btn outlined">GitHub</a>
       </div>
     </section>
-    <!-- ABOUT -->    
+
+    <!-- ABOUT -->
     <section>
       <h2>About</h2>
       <p>
-        Daniel Coons is an Electrical Engineer, LabVIEW Software Lead, and Project Manager for Technology Service Corporation.
-      </p>  
-      
-      <div class="credential-row">
-        <img src="./assets/images/labview-champion.png" alt="LabVIEW Champion" class="credential-image">
-        <img src="./assets/images/certified-labview-architect.png" alt="Certified LabVIEW Architect" class="credential-image">
-        <img src="./assets/images/ni-certified-professional-instructor.png" alt="NI Certified Professional Instructor" class="credential-image">
+        Electrical Engineer, LabVIEW Software Lead, and Project Manager at Technology Service Corporation.
+      </p>
+
+      <div class="credential-row fade-in">
+        <div class="credential-item">
+          <img src="./assets/images/labview-champion.png" class="credential-image" loading="lazy">
+          <span>LabVIEW Champion</span>
+        </div>
+        <div class="credential-item">
+          <img src="./assets/images/certified-labview-architect.png" class="credential-image" loading="lazy">
+          <span>Certified LabVIEW Architect</span>
+        </div>
+        <div class="credential-item">
+          <img src="./assets/images/ni-certified-professional-instructor.png" class="credential-image" loading="lazy">
+          <span>NI Certified Professional Instructor</span>
+        </div>
       </div>
     </section>
 
@@ -66,56 +75,79 @@
 
       <div class="grid">
 
-        <div class="card">
-          <h3>TSC Material Toolkit</h3>
-          <p>Material-style UI system for LabVIEW.</p>
-          <a href="./projects/sample-project.html">View Project →</a>
-                    <div class="tags">
-            <span class="chip">LabVIEW</span>
-            <span class="chip">UI System</span>
-            <span class="chip">Theming</span>
+        <!-- CARD -->
+        <div class="card fade-in">
+
+          <div class="carousel">
+            <div class="carousel-track">
+              <img src="./assets/images/project1/1.png" class="carousel-image active" loading="lazy">
+              <img src="./assets/images/project1/2.png" class="carousel-image" loading="lazy">
+              <img src="./assets/images/project1/3.png" class="carousel-image" loading="lazy">
+              <img src="./assets/images/project1/4.png" class="carousel-image" loading="lazy">
+            </div>
+
+            <button class="carousel-btn prev">&#10094;</button>
+            <button class="carousel-btn next">&#10095;</button>
+
+            <div class="carousel-dots"></div>
           </div>
-        </div>
-        <div class="card">
-          <h3>TSC UI Components</h3>
-          <p>Customized set of LabVIEW Front Panel Controls/Indicators.</p>
-          <a href="https://github.com/danielcoons/tsc-ui-components">View Project →</a>
-          <div class="tags">
-            <span class="chip">LabVIEW</span>
-            <span class="chip">UI System</span>
+
+          <div class="card-content">
+            <h3>TSC Material Toolkit</h3>
+            <p>Material-style UI system for LabVIEW.</p>
+
+            <div class="chip-row">
+              <div class="chip">UI</div>
+              <div class="chip">LabVIEW</div>
+              <div class="chip">Dynamic Theme</div>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <h3>TSC Pop Ups</h3>
-          <p>A reinvented pop-up library with standard images and customizable images.</p>
-          <a href="https://github.com/danielcoons/tsc-pop-up">View Project →</a>
-          <div class="tags">
-            <span class="chip">LabVIEW</span>
-            <span class="chip">UI System</span>
+
+          <div class="card-actions">
+            <a href="#">View Project →</a>
+            <a href="#">Download →</a>
           </div>
         </div>
 
+        <!-- CARD -->
+        <div class="card fade-in">
+          <div class="card-content">
+            <h3>TSC UI Components</h3>
+            <p>Custom LabVIEW UI controls.</p>
+
+            <div class="chip-row">
+              <div class="chip">UI</div>
+              <div class="chip">LabVIEW</div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a href="https://github.com/danielcoons/tsc-ui-components">View Project →</a>
+            <a href="#">Download →</a>
+          </div>
+        </div>
 
       </div>
     </section>
 
-    <!-- DESIGN SYSTEM PREVIEW -->
+    <!-- DESIGN SYSTEM -->
     <section>
       <h2>Design System</h2>
 
-      <div class="card">
+      <div class="card fade-in">
         <div class="demo-row">
           <button class="btn filled">Primary</button>
           <button class="btn tonal">Tonal</button>
           <button class="btn outlined">Outlined</button>
         </div>
 
-        <a href="./components/buttons.html">Browse Components →</a>
+        <div class="card-actions">
+          <a href="./components/buttons.html">Browse Components →</a>
+        </div>
       </div>
     </section>
 
   </main>
-
 </div>
 
 <script src="./assets/js/main.js"></script>
